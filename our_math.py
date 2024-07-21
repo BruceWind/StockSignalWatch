@@ -29,6 +29,7 @@ def calculate_min(data):
 
 def find_third_largest(arr):
     """Find the third largest number in the array, ignoring NaN values."""
+    validate_array(arr)
     # Convert input to a NumPy array
     arr = np.array(arr)
     
@@ -50,6 +51,7 @@ def find_third_largest(arr):
 
 def find_largest(arr):
     """Find the largest number in the array, ignoring NaN values."""
+    validate_array(arr)
     # Convert input to a NumPy array
     arr = np.array(arr)
     
@@ -66,6 +68,7 @@ def find_largest(arr):
 
 def find_third_smallest(arr):
     """Find the third smallest number in the array, ignoring NaN values."""
+    validate_array(arr)
     # Convert input to a NumPy array
     arr = np.array(arr)
     
@@ -86,6 +89,7 @@ def find_third_smallest(arr):
 
 def find_smallest(arr):
     """Find the third smallest number in the array, ignoring NaN values."""
+    validate_array(arr)
     # Convert input to a NumPy array
     arr = np.array(arr)
     
@@ -98,3 +102,27 @@ def find_smallest(arr):
     
     # Return the third smallest number
     return np.min(arr) 
+
+
+
+class ArrayValidationError(Exception):
+    """Custom exception for array validation errors."""
+    pass
+
+def validate_array(arr):
+    """Validate the input array."""
+    # Convert input to a NumPy array
+    arr = np.array(arr)
+    
+    # Remove NaN values
+    filtered_arr = arr[~np.isnan(arr)]
+    
+    # Check if the length is 0
+    if len(filtered_arr) == 0:
+        raise ArrayValidationError("Array contains only NaN values.")
+    
+    # Check for values exceeding ±300
+    if np.any(np.abs(filtered_arr) > 300):
+        raise ArrayValidationError("Array contains values outside the range -300 to 300.")
+    
+    return True  # Validation passed
