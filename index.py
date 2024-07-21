@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 
+from our_math import calculate_mean, calculate_median
 
 def calculate_cci(data, period=20):
     """Calculate the Commodity Channel Index (CCI)."""
@@ -24,6 +25,18 @@ def lowest_monthly_cci(symbol):
     
     return monthly_lowest_cci
 
+def highest_monthly_cci(symbol):
+    """Calculate the lowest CCI for each month over the last 12 months."""
+    # Fetch data for the entire 12-month period
+    df = fetch_data(symbol)
+    
+    # Calculate CCI for the entire period
+    df['CCI'] = calculate_cci(df)
+    
+    # Group by month and get the lowest CCI
+    monthly_highest_cci = df.groupby(pd.Grouper(freq='ME'))['CCI'].max()
+    
+    return monthly_highest_cci
 
 
 def calculate_monthly_low_average(data, column='Close'):
@@ -63,7 +76,7 @@ def calculate_avg_low_cci(data, column='Close'):
 
 
 ## period can be:  ['1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max']
-def fetch_data(symbol, period="6mo"):
+def fetch_data(symbol, period="1y"):
     """Fetch stock data."""
     ticker = yf.Ticker(symbol)
     df = ticker.history(period=period)
@@ -89,8 +102,8 @@ def calculate_cci(data, window=20):
 
 def main():
     # symbol = "APPL"  # Example: Apple Inc.
-    # symbol = "^SPX"
-    symbol = "QQQ"
+    symbol = "^SPX"
+    # symbol = "QQQ"
     df = fetch_data(symbol)
     
     df['RSI'] = calculate_rsi(df['Close'])
@@ -114,8 +127,22 @@ def main():
     ## it is an array 
     monthly_lower_cci_arr = lowest_monthly_cci(symbol)
 
+    ## to filter cci is miner than -100
+    # monthly_lower_cci_arr = monthly_lower_cci_arr[monthly_lower_cci_arr < -100]
+
     print(f"Monthly lowest CCI for {symbol}:")
     print(monthly_lower_cci_arr.to_string(float_format='{:.2f}'.format))
+
+
+    median = calculate_median(monthly_lower_cci_arr)
+    print(f"Median monthly lowest CCI for {symbol}: {median:.2f}")
+
+    monthly_highest_cci_arr = highest_monthly_cci(symbol)
+    print(f"Monthly highest CCI for {symbol}:")
+    print(monthly_highest_cci_arr.to_string(float_format='{:.2f}'.format))
+
+    median = calculate_median(monthly_highest_cci_arr)
+    print(f"Median monthly highest CCI for {symbol}: {median:.2f}")
 
 if __name__ == "__main__":
     main()
