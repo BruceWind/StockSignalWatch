@@ -60,20 +60,20 @@ deactivate
 4. Get Your **Chat ID**
 To find your Chat ID:
 
-Start a chat with your bot.
-Send a message to the bot, then visit the following URL in your browser, replacing `YOUR_BOT_TOKEN` with your bot token:
-Copy
-https://api.telegram.org/bot{YOUR_BOT_TOKEN}/getUpdates
-Look for the chat object in the JSON response to find your Chat ID.
+> Start a chat with your bot.
+> Send a message to the bot, then visit the following URL in your browser, replacing `YOUR_BOT_TOKEN` with your bot token:
+> Copy `https://api.telegram.org/bot{YOUR_BOT_TOKEN}/getUpdates`
+> 
+> Look for the chat object in the JSON response to find your Chat ID.
 
 5. Add **Variables** to GitHub
-Return to your GitHub repository and add the following variables in the repository **settings**:
+> Return to your GitHub repository and add the following variables in the repository **settings**:
 
-Navigate to **Settings** > **Actions** > **Variables**.
-Add the following variables:
-SYMBOL (your desired symbol)
-TELEGRAM_CHAT_ID (your chat ID)
-TELEGRAM_BOT_TOKEN (your bot token)
+> Navigate to **Settings** > **Actions** > **Variables**.
+> Add the following variables:
+- SYMBOL (your desired symbol)
+- TELEGRAM_CHAT_ID (your chat ID)
+- TELEGRAM_BOT_TOKEN (your bot token)
 
 Like:
 <img width="1131" alt="Screenshot 2024-07-22 at 11 39 02 AM" src="https://github.com/user-attachments/assets/4f12745a-ed88-4cf3-8f15-44eb8c8a264e">
