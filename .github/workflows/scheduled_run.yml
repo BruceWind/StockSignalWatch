@@ -4,7 +4,7 @@ on:
   push:
   schedule:
     # At 09:00 （UTC） on workdays
-    - cron: '0 9 * * 1-5'
+    - cron: '30 0 * * 1-5'
 
 jobs:
   run_script:
