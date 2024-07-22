@@ -22,8 +22,8 @@ def lowest_monthly_rsi(symbol):
   
   return monthly_lowest_rsi
 
-def highest_monthly_rsi(symbol):
-  """Calculate the highest RSI for each month over the last 12 months."""
+def largest_monthly_rsi(symbol):
+  """Calculate the largest RSI for each month over the last 12 months."""
   # Fetch data for the entire 12-month period
 
   end_date = datetime.now() - timedelta(days=5)
@@ -33,10 +33,10 @@ def highest_monthly_rsi(symbol):
   # Calculate RSI for the entire period
   df['RSI'] = calculate_rsi(df['Close'])
   
-  # Group by month and get the highest RSI
-  monthly_highest_rsi = df.groupby(pd.Grouper(freq='MS'))['RSI'].max()
+  # Group by month and get the largest RSI
+  monthly_largest_rsi = df.groupby(pd.Grouper(freq='MS'))['RSI'].max()
   
-  return monthly_highest_rsi
+  return monthly_largest_rsi
 
 def lowest_monthly_cci(symbol):
     """Calculate the lowest CCI for each month over the last 12 months."""
@@ -54,7 +54,7 @@ def lowest_monthly_cci(symbol):
     
     return monthly_lowest_cci
 
-def highest_monthly_cci(symbol):
+def largest_monthly_cci(symbol):
     """Calculate the lowest CCI for each month over the last 12 months."""
     # Fetch data for the entire 12-month period
    
@@ -66,9 +66,9 @@ def highest_monthly_cci(symbol):
     df['CCI'] = calculate_cci(df)
     
     # Group by month and get the lowest CCI
-    monthly_highest_cci = df.groupby(pd.Grouper(freq='MS'))['CCI'].max()
+    monthly_largest_cci = df.groupby(pd.Grouper(freq='MS'))['CCI'].max()
     
-    return monthly_highest_cci
+    return monthly_largest_cci
 
 
 def calculate_monthly_low_average(data, column='Close'):
@@ -154,15 +154,15 @@ def main():
     # print(monthly_lower_rsi_arr.to_string(float_format='{:.2f}'.format))
 
 
-    monthly_highest_rsi_arr = highest_monthly_rsi(symbol)
-    # print(f"Monthly highest RSI for {symbol}:")
-    # print(monthly_highest_rsi_arr.to_string(float_format='{:.2f}'.format))
+    monthly_largest_rsi_arr = largest_monthly_rsi(symbol)
+    # print(f"Monthly largest RSI for {symbol}:")
+    # print(monthly_largest_rsi_arr.to_string(float_format='{:.2f}'.format))
 
-    highest_rsi = find_largest(monthly_highest_rsi_arr)
-    third_highest_rsi = find_third_largest(monthly_highest_rsi_arr)
+    largest_rsi = find_largest(monthly_largest_rsi_arr)
+    third_largest_rsi = find_third_largest(monthly_largest_rsi_arr)
 
-    print(f"Highest monthly RSI: {highest_rsi:.2f}")
-    print(f"Third highest monthly RSI: {third_highest_rsi:.2f}")
+    print(f"Largest monthly RSI: {largest_rsi:.2f}")
+    print(f"Third largest monthly RSI: {third_largest_rsi:.2f}")
 
 
     lowest_rsi = find_smallest(monthly_lower_rsi_arr)
@@ -188,12 +188,12 @@ def main():
 
 
 
-    monthly_highest_cci_arr = highest_monthly_cci(symbol)
-    # print(f"Monthly highest CCI for {symbol}:")
-    # print(monthly_highest_cci_arr.to_string(float_format='{:.2f}'.format))
+    monthly_largest_cci_arr = largest_monthly_cci(symbol)
+    # print(f"Monthly largest CCI for {symbol}:")
+    # print(monthly_largest_cci_arr.to_string(float_format='{:.2f}'.format))
 
-    # median = calculate_median(monthly_highest_cci_arr)
-    # print(f"Median monthly highest CCI for {symbol}: {median:.2f}")
+    # median = calculate_median(monthly_largest_cci_arr)
+    # print(f"Median monthly largest CCI for {symbol}: {median:.2f}")
     
     third_smallest_cci = find_third_smallest(monthly_lower_cci_arr)
     print(f"Third smallest monthly lowest CCI for {symbol}: {third_smallest_cci:.2f}")
@@ -201,9 +201,9 @@ def main():
     print(f"Smallest monthly lowest CCI for {symbol}: {smallest_cci:.2f}")
 
     ## largest and 3rd largest
-    largest_cci = find_largest(monthly_highest_cci_arr)
+    largest_cci = find_largest(monthly_largest_cci_arr)
     print(f"Largest monthly lowest CCI for {symbol}: {largest_cci:.2f}")
-    third_largest_cci = find_third_largest(monthly_highest_cci_arr)
+    third_largest_cci = find_third_largest(monthly_largest_cci_arr)
     print(f"Third largest monthly lowest CCI for {symbol}: {third_largest_cci:.2f}")
     print(f"Current CCI for {symbol}: {latest_cci:.2f}")
 
@@ -215,8 +215,8 @@ def main():
     elif latest_cci < smallest_cci: value -=2
     elif latest_cci < third_smallest_cci: value -=1
 
-    if latest_rsi > highest_rsi: value += 2
-    elif latest_rsi > third_highest_rsi: value += 1
+    if latest_rsi > largest_rsi: value += 2
+    elif latest_rsi > third_largest_rsi: value += 1
     elif latest_rsi < lowest_rsi: value -=2
     elif latest_rsi < third_lowest_rsi: value -=1
 

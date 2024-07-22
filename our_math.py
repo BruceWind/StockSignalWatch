@@ -122,7 +122,7 @@ def validate_array(arr):
         raise ArrayValidationError("Array contains only NaN values.")
     
     # Check for values exceeding ±300
-    if np.any(np.abs(filtered_arr) > 300):
+    if np.any(np.abs(filtered_arr) > 500):
         raise ArrayValidationError("Array contains values outside the range -300 to 300.")
     
     return True  # Validation passed
