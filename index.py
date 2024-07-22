@@ -16,7 +16,7 @@ def lowest_monthly_rsi(symbol):
   df['RSI'] = calculate_rsi(df['Close'])
   
   # Group by month and get the lowest RSI
-  monthly_lowest_rsi = df.groupby(pd.Grouper(freq='ME'))['RSI'].min()
+  monthly_lowest_rsi = df.groupby(pd.Grouper(freq='MS'))['RSI'].min()
   
   return monthly_lowest_rsi
 
@@ -32,7 +32,7 @@ def highest_monthly_rsi(symbol):
   df['RSI'] = calculate_rsi(df['Close'])
   
   # Group by month and get the highest RSI
-  monthly_highest_rsi = df.groupby(pd.Grouper(freq='ME'))['RSI'].max()
+  monthly_highest_rsi = df.groupby(pd.Grouper(freq='MS'))['RSI'].max()
   
   return monthly_highest_rsi
 
@@ -48,7 +48,7 @@ def lowest_monthly_cci(symbol):
     df['CCI'] = calculate_cci(df)
     
     # Group by month and get the lowest CCI
-    monthly_lowest_cci = df.groupby(pd.Grouper(freq='ME'))['CCI'].min()
+    monthly_lowest_cci = df.groupby(pd.Grouper(freq='MS'))['CCI'].min()
     
     return monthly_lowest_cci
 
@@ -64,7 +64,7 @@ def highest_monthly_cci(symbol):
     df['CCI'] = calculate_cci(df)
     
     # Group by month and get the lowest CCI
-    monthly_highest_cci = df.groupby(pd.Grouper(freq='ME'))['CCI'].max()
+    monthly_highest_cci = df.groupby(pd.Grouper(freq='MS'))['CCI'].max()
     
     return monthly_highest_cci
 
