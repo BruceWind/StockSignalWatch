@@ -1,0 +1,33 @@
+name: Scheduled Run
+
+on:
+  push:
+  schedule:
+    # 在工作日每天上午9点运行 (UTC时间)
+    - cron: '0 9 * * 1-5'
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    
+    - name: Create and activate virtual environment
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run script
+      run: |
+        python index.py
