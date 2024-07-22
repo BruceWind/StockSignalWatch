@@ -16,12 +16,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.12.4'  # 或者 '3.12' 如果您确定所有依赖都兼容
+        python-version: '3.11'  # 或者 '3.12' 如果您确定所有依赖都兼容
     
     - name: Create and activate virtual environment N Install dependencies
       run: |
         python -m venv venv
         source venv/bin/activate
         python -m pip install --upgrade pip setuptools wheel
+        pip install --use-pep517 -r requirements.txt
         pip install -r requirements.txt
         python index.py
