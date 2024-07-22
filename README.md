@@ -34,16 +34,25 @@ deactivate
 
 ## Run it with Github-actions in schedule
 1. Fork the Repository
-First, fork this repository to your own GitHub account. This allows you to make changes and track your own version of the project.
+ 
+> First, fork this repository to your own GitHub account. This allows you to make changes and track your own version of the project.
 
 2. Create a **Telegram Bot**
-Next, you need to create a Telegram bot:
+> Next, you need to create a Telegram bot:
 
-Open Telegram and search for the **BotFather**.
-Start a chat with **BotFather** and use the command `/newbot` to create a new bot.
-Follow the instructions to get your Bot Token.
+> Open Telegram and search for the **BotFather**.
+> Start a chat with **BotFather** and use the command `/newbot` to create a new bot.
+> Follow the instructions to get your Bot Token.
 
-3. Get Your **Chat ID**
+3. Get expected **Ticket Symbol**
+
+> A easy way is to search in google: "{keyword} yahoo finance". You can see  the **Symbol** wrapped with parentheses in the first line:
+> <img width="719" alt="Screenshot 2024-07-22 at 12 25 45 PM" src="https://github.com/user-attachments/assets/aa244521-b10a-473d-85bc-129c99f69632">
+
+
+
+
+4. Get Your **Chat ID**
 To find your Chat ID:
 
 Start a chat with your bot.
@@ -52,7 +61,7 @@ Copy
 https://api.telegram.org/bot{YOUR_BOT_TOKEN}/getUpdates
 Look for the chat object in the JSON response to find your Chat ID.
 
-4. Add **Variables** to GitHub
+5. Add **Variables** to GitHub
 Return to your GitHub repository and add the following variables in the repository **settings**:
 
 Navigate to **Settings** > **Actions** > **Variables**.
