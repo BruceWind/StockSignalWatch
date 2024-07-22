@@ -49,4 +49,5 @@ def send_telegram_notification(symbol, value):
     if response.status_code == 200:
         print("Notification sent successfully.")
     else:
-        print("Error occurred while sending notification.")
+        print("🔴Error occurred while sending notification.")
+        raise ValueError("🔴Error: Can not send msg to Telegram.")

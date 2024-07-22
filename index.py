@@ -209,7 +209,7 @@ def main():
 
 
     ## to calculate value for notification.
-    value = 4
+    value = 0
     if latest_cci > largest_cci: value += 2
     elif latest_cci > third_largest_cci: value += 1
 
