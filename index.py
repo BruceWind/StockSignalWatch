@@ -4,6 +4,7 @@ import numpy as np
 from datetime import datetime, timedelta
 
 from our_math import calculate_mean, calculate_median, find_third_smallest, find_smallest, find_largest, find_third_largest
+from notifier import send_telegram_notification
 
 def lowest_monthly_rsi(symbol):
   """Calculate the lowest RSI for each month over the last 12 months."""
@@ -144,26 +145,26 @@ def main():
     print(f"------------ RSI --------")
     
     monthly_lower_rsi_arr = lowest_monthly_rsi(symbol)
-    print(f"Monthly lowest RSI for {symbol}:")
-    print(monthly_lower_rsi_arr.to_string(float_format='{:.2f}'.format))
+    # print(f"Monthly lowest RSI for {symbol}:")
+    # print(monthly_lower_rsi_arr.to_string(float_format='{:.2f}'.format))
 
 
     monthly_highest_rsi_arr = highest_monthly_rsi(symbol)
-    print(f"Monthly highest RSI for {symbol}:")
-    print(monthly_highest_rsi_arr.to_string(float_format='{:.2f}'.format))
+    # print(f"Monthly highest RSI for {symbol}:")
+    # print(monthly_highest_rsi_arr.to_string(float_format='{:.2f}'.format))
 
-    highest = find_largest(monthly_highest_rsi_arr)
-    third_highest = find_third_largest(monthly_highest_rsi_arr)
+    highest_rsi = find_largest(monthly_highest_rsi_arr)
+    third_highest_rsi = find_third_largest(monthly_highest_rsi_arr)
 
-    print(f"Highest monthly RSI: {highest:.2f}")
-    print(f"Third highest monthly RSI: {third_highest:.2f}")
+    print(f"Highest monthly RSI: {highest_rsi:.2f}")
+    print(f"Third highest monthly RSI: {third_highest_rsi:.2f}")
 
 
-    lowest = find_smallest(monthly_lower_rsi_arr)
-    third_lowest = find_third_smallest(monthly_lower_rsi_arr)
+    lowest_rsi = find_smallest(monthly_lower_rsi_arr)
+    third_lowest_rsi = find_third_smallest(monthly_lower_rsi_arr)
 
-    print(f"Lowest monthly RSI: {lowest:.2f}")
-    print(f"Third lowest monthly RSI: {third_lowest:.2f}")
+    print(f"Lowest monthly RSI: {lowest_rsi:.2f}")
+    print(f"Third lowest monthly RSI: {third_lowest_rsi:.2f}")
 
     print(f"Current RSI for {symbol}: {latest_rsi:.2f}")
 
@@ -183,23 +184,38 @@ def main():
 
 
     monthly_highest_cci_arr = highest_monthly_cci(symbol)
-    print(f"Monthly highest CCI for {symbol}:")
-    print(monthly_highest_cci_arr.to_string(float_format='{:.2f}'.format))
+    # print(f"Monthly highest CCI for {symbol}:")
+    # print(monthly_highest_cci_arr.to_string(float_format='{:.2f}'.format))
 
     # median = calculate_median(monthly_highest_cci_arr)
     # print(f"Median monthly highest CCI for {symbol}: {median:.2f}")
     
-    third_smallest = find_third_smallest(monthly_lower_cci_arr)
-    print(f"Third smallest monthly lowest CCI for {symbol}: {third_smallest:.2f}")
+    third_smallest_cci = find_third_smallest(monthly_lower_cci_arr)
+    print(f"Third smallest monthly lowest CCI for {symbol}: {third_smallest_cci:.2f}")
     smallest_cci = find_smallest(monthly_lower_cci_arr)
     print(f"Smallest monthly lowest CCI for {symbol}: {smallest_cci:.2f}")
 
     ## largest and 3rd largest
-    largest = find_largest(monthly_highest_cci_arr)
-    print(f"Largest monthly lowest CCI for {symbol}: {largest:.2f}")
-    third_largest = find_third_largest(monthly_highest_cci_arr)
-    print(f"Third largest monthly lowest CCI for {symbol}: {third_largest:.2f}")
+    largest_cci = find_largest(monthly_highest_cci_arr)
+    print(f"Largest monthly lowest CCI for {symbol}: {largest_cci:.2f}")
+    third_largest_cci = find_third_largest(monthly_highest_cci_arr)
+    print(f"Third largest monthly lowest CCI for {symbol}: {third_largest_cci:.2f}")
     print(f"Current CCI for {symbol}: {latest_cci:.2f}")
+
+
+    ## to calculate value for notification.
+    value = 4
+    if latest_cci > largest_cci: value += 2
+    elif latest_cci > third_largest_cci: value += 1
+
+    if latest_rsi > highest_rsi: value += 2
+    elif latest_rsi > third_highest_rsi: value += 1
+
+    print(f"Value: {value}")
+
+    ## math .abs value 
+    if abs(value) > 1:
+        send_telegram_notification(symbol, value)
 
 if __name__ == "__main__":
     main()

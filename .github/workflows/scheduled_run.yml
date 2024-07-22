@@ -12,6 +12,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - uses: gautamkrishnar/keepalive-workflow@v2 # using the workflow to keep the workflow not to be deleted by Github.
     
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -34,3 +35,21 @@ jobs:
     - name: Run script
       run: |
         python index.py
+    - name: Create Issue on Failure
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const fs = require('fs')
+          let error_log = ''
+          if (fs.existsSync('notification_message.txt')) {
+            error_log = fs.readFileSync('notification_message.txt', 'utf8')
+          }
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: 'Workflow Failed: Abnormal Condition Detected',
+            body: `The scheduled run detected an abnormal condition. Details:\n\n${error_log}`
+          })
+  
