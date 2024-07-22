@@ -5,6 +5,9 @@ StockSignalWatch is a Python-based tool for analyzing stock market data and gene
 
 In summary, it will tell you when to buy or sell.
 
+## 🚧 It is still developing
+You can star it first, it may take one month to finish.
+
 ## Features
 
 - Fetch real-time stock data using yfinance
@@ -79,6 +82,8 @@ After all, github actions will run this script in schedule.
 
 When the script believe you should **buy or sell**, it would send notification to telegram. Like:
 <img width="757" alt="Screenshot 2024-07-22 at 12 03 58 PM" src="https://github.com/user-attachments/assets/81698389-99b9-4f58-ab8a-e8244afe0f04">
+
+
 
 ## License
 
