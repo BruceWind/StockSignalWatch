@@ -3,6 +3,8 @@
 
 StockSignalWatch is a Python-based tool for analyzing stock market data and generating technical indicators. This repository performs specific calculations to determine whether several indicators exceed expected values. If they do, it will send you a notification.
 
+In summary, it will tell you when to buy or sell.
+
 ## Features
 
 - Fetch real-time stock data using yfinance
