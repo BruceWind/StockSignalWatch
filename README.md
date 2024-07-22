@@ -80,7 +80,7 @@ Like:
 
 After all, github actions will run this script in schedule.
 
-When the script believe you should **buy or sell**, it would send notification to telegram. Like:
+When the script believe you should **buy or sell**, it sends notification to you in telegram. Like:
 <img width="757" alt="Screenshot 2024-07-22 at 12 03 58 PM" src="https://github.com/user-attachments/assets/81698389-99b9-4f58-ab8a-e8244afe0f04">
 
 
