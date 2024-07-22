@@ -1,3 +1,4 @@
+import os
 import yfinance as yf
 import pandas as pd
 import numpy as np
@@ -132,7 +133,11 @@ def calculate_cci(data, window=20):
 
 def main():
     # symbol = "APPL"  # Example: Apple Inc.
-    symbol = "^SPX"
+    # symbol = "^SPX"
+
+    symbol = os.getenv('SYMBOL')
+    if symbol is None:
+        raise ValueError("SYMBOL environment variable is not set.")
     # symbol = "QQQ"
     df = fetch_data(symbol)
     

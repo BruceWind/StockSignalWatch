@@ -24,6 +24,9 @@ def send_telegram_notification(symbol, value):
     full_url = full_url.encode('ascii', 'ignore').decode('ascii')
     # append yahoo_fn_base_url+ symbol to the message
     message = message + "\n\n\nMore detail here:\n" +full_url
+
+
+    print(message)
     
 
     # Write the message to a text file
