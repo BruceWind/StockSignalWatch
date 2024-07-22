@@ -34,8 +34,8 @@ def send_telegram_notification(symbol, value):
         file.write(message + '\n')
 
     
-    if bot_token is None or chat_id is None:
-        raise ValueError("Error: Telegram Bot Token or Chat ID not set.")
+    if not bot_token or not chat_id:
+        raise ValueError("🔴Error: Telegram Bot Token or Chat ID not set.")
 
     # Send a request to Telegram
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"

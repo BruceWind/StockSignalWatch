@@ -136,8 +136,8 @@ def main():
     # symbol = "^SPX"
 
     symbol = os.getenv('SYMBOL')
-    if symbol is None:
-        raise ValueError("SYMBOL environment variable is not set.")
+    if not symbol:
+        raise ValueError("🔴SYMBOL environment variable is not set.")
     # symbol = "QQQ"
     df = fetch_data(symbol)
     
