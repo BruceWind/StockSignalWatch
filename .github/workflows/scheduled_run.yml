@@ -9,7 +9,6 @@ on:
 jobs:
   run_script:
     runs-on: ubuntu-latest
-
     
     steps:
     - uses: actions/checkout@v2
@@ -17,17 +16,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.12.4'  # 或者 '3.12' 如果您确定所有依赖都兼容
     
-    - name: Create and activate virtual environment
+    - name: Create and activate virtual environment N Install dependencies
       run: |
         python -m venv venv
         source venv/bin/activate
-    
-    - name: Install dependencies
-      run: |
+        python -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
-    
-    - name: Run script
-      run: |
         python index.py
