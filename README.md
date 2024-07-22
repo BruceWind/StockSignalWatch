@@ -49,7 +49,7 @@ deactivate
 > Start a chat with **BotFather** and use the command `/newbot` to create a new bot.
 > Follow the instructions to get your Bot Token.
 
-3. Get expected **Ticket Symbol**
+3. Get expected **Ticker Symbol**
 
 > A easy way is to search in google: "{keyword} yahoo finance". You can see  the **Symbol** wrapped with parentheses in the first line:
 > <img width="719" alt="Screenshot 2024-07-22 at 12 25 45 PM" src="https://github.com/user-attachments/assets/aa244521-b10a-473d-85bc-129c99f69632">
