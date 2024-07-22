@@ -3,7 +3,7 @@ name: Scheduled Run
 on:
   push:
   schedule:
-    # 在工作日每天上午9点运行 (UTC时间)
+    # At 09:00 （UTC） on workdays
     - cron: '0 9 * * 1-5'
 
 jobs:
@@ -16,13 +16,21 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.11'  # 或者 '3.12' 如果您确定所有依赖都兼容
+        python-version: '3.11'  # or '3.12' if compatible 
     
-    - name: Create and activate virtual environment N Install dependencies
+    - name: Create and activate virtual environment
       run: |
         python -m venv venv
         source venv/bin/activate
+    
+    - name: Upgrade pip and setuptools
+      run: |
         python -m pip install --upgrade pip setuptools wheel
+    
+    - name: Install dependencies
+      run: |
         pip install --use-pep517 -r requirements.txt
-        pip install -r requirements.txt
+    
+    - name: Run script
+      run: |
         python index.py
