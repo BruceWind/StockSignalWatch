@@ -212,9 +212,13 @@ def main():
     value = 0
     if latest_cci > largest_cci: value += 2
     elif latest_cci > third_largest_cci: value += 1
+    elif latest_cci > smallest_cci: value -=2
+    elif latest_cci > third_smallest_cci: value -=1
 
     if latest_rsi > highest_rsi: value += 2
     elif latest_rsi > third_highest_rsi: value += 1
+    elif latest_rsi > lowest_rsi: value -=2
+    elif latest_rsi > third_lowest_rsi: value -=1
 
     print(f"Value: {value}")
 
