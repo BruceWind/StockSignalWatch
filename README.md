@@ -32,7 +32,35 @@ python index.py
 deactivate
 ```
 
+## Run it with Github-actions in schedule
+1. Fork the Repository
+First, fork this repository to your own GitHub account. This allows you to make changes and track your own version of the project.
 
+2. Create a **Telegram Bot**
+Next, you need to create a Telegram bot:
+
+Open Telegram and search for the **BotFather**.
+Start a chat with **BotFather** and use the command `/newbot` to create a new bot.
+Follow the instructions to get your Bot Token.
+3. Get Your **Chat ID**
+To find your Chat ID:
+
+Start a chat with your bot.
+Send a message to the bot, then visit the following URL in your browser, replacing `YOUR_BOT_TOKEN` with your bot token:
+Copy
+https://api.telegram.org/bot{YOUR_BOT_TOKEN}/getUpdates
+Look for the chat object in the JSON response to find your Chat ID.
+
+4. Add **Variables** to GitHub
+Return to your GitHub repository and add the following variables in the repository settings:
+
+Navigate to Settings > Actions > Variables.
+Add the following variables:
+SYMBOL (your desired symbol)
+TELEGRAM_CHAT_ID (your chat ID)
+TELEGRAM_BOT_TOKEN (your bot token)
+
+After all, github actions will run this script in schedule.
 
 ## License
 
