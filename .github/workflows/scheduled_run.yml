@@ -33,6 +33,10 @@ jobs:
         pip install --use-pep517 -r requirements.txt
     
     - name: Run script
+      env:
+        SYMBOL: ${{ vars.SYMBOL }}
+        TELEGRAM_BOT_TOKEN: ${{ vars.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ vars.TELEGRAM_CHAT_ID }}
       run: |
         python index.py
     - name: Create Issue on Failure
