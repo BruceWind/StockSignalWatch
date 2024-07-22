@@ -42,6 +42,7 @@ Next, you need to create a Telegram bot:
 Open Telegram and search for the **BotFather**.
 Start a chat with **BotFather** and use the command `/newbot` to create a new bot.
 Follow the instructions to get your Bot Token.
+
 3. Get Your **Chat ID**
 To find your Chat ID:
 
@@ -52,15 +53,21 @@ https://api.telegram.org/bot{YOUR_BOT_TOKEN}/getUpdates
 Look for the chat object in the JSON response to find your Chat ID.
 
 4. Add **Variables** to GitHub
-Return to your GitHub repository and add the following variables in the repository settings:
+Return to your GitHub repository and add the following variables in the repository **settings**:
 
-Navigate to Settings > Actions > Variables.
+Navigate to **Settings** > **Actions** > **Variables**.
 Add the following variables:
 SYMBOL (your desired symbol)
 TELEGRAM_CHAT_ID (your chat ID)
 TELEGRAM_BOT_TOKEN (your bot token)
 
-After all, github actions will run this script in schedule.
+Like:
+<img width="1131" alt="Screenshot 2024-07-22 at 11 39 02 AM" src="https://github.com/user-attachments/assets/4f12745a-ed88-4cf3-8f15-44eb8c8a264e">
+
+After all, github actions will run this script in schedule. 
+
+When the script believe you should **buy or sell**, it would send notification to telegram. Like:
+<img width="757" alt="Screenshot 2024-07-22 at 12 03 58 PM" src="https://github.com/user-attachments/assets/81698389-99b9-4f58-ab8a-e8244afe0f04">
 
 ## License
 
