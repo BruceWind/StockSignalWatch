@@ -25,7 +25,7 @@ StockSignalWatch is a Python-based tool for analyzing stock market data and gene
  ## see doc: https://docs.python.org/3/library/venv.html#creating-virtual-environments
 python3 -m venv myenv ## only init at first time.
 source myenv/bin/activate
-pip install -r requirements.txt ## only install at first time.
+pip install --use-pep517 -r requirements.txt ## only install at first time.
 python index.py
 
 ## exist python env
