@@ -14,9 +14,9 @@ def send_telegram_notification(symbol, value):
     elif value > 1:
         message = f"📈Recommendation to buy \"{symbol}\"."
     elif value < -3:
-        message = f"📉Strong recommendation to sell \"{symbol}\"."
+        message = f"🔴Strong recommendation to sell \"{symbol}\"."
     elif value < -1:
-        message = f"🔴Recommendation to sell \"{symbol}\"."
+        message = f"📉Recommendation to sell \"{symbol}\"."
     else:
         message = "No valid recommendation."
 
