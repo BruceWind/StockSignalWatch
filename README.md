@@ -72,8 +72,8 @@ To find your Chat ID:
 > Navigate to **Settings** > **Actions** > **Variables**.
 > Add the following variables:
 - SYMBOL (your desired symbol)
-- TELEGRAM_CHAT_ID (your chat ID)
-- TELEGRAM_BOT_TOKEN (your bot token)
+- TELEGRAM_CHAT_ID (optional)
+- TELEGRAM_BOT_TOKEN (optional)
 
 Like:
 <img width="1131" alt="Screenshot 2024-07-22 at 11 39 02 AM" src="https://github.com/user-attachments/assets/4f12745a-ed88-4cf3-8f15-44eb8c8a264e">
