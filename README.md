@@ -66,6 +66,8 @@ To find your Chat ID:
 > 
 > Look for the chat object in the JSON response to find your Chat ID.
 
+If you dont want to use telegram notification, its ok. Github actions will send you email if you dont set those variables.
+
 5. Add **Variables** to GitHub
 > Return to your GitHub repository and add the following variables in the repository **settings**:
 
