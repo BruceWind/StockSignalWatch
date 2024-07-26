@@ -99,14 +99,14 @@ def fetch_data_by_range(symbol, start=None, end=None):
 
 
 # def calculate_rsi(data, window=14):
-    """Calculate RSI."""
-    delta = data.diff()
-    gain = (delta.where(delta > 0, 0)).rolling(window=window).mean()
-    loss = (-delta.where(delta < 0, 0)).rolling(window=window).mean()
+    # """Calculate RSI."""
+    # delta = data.diff()
+    # gain = (delta.where(delta > 0, 0)).rolling(window=window).mean()
+    # loss = (-delta.where(delta < 0, 0)).rolling(window=window).mean()
     
-    rs = gain / loss
-    rsi = 100 - (100 / (1 + rs))
-    return rsi
+    # rs = gain / loss
+    # rsi = 100 - (100 / (1 + rs))
+    # return rsi
 
 
 ## middle value of CCI should be 50.
