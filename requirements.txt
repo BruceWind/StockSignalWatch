@@ -1,0 +1,9 @@
+setuptools
+numpy
+pandas
+yfinance
+flask
+requests
+fastapi
+fastapi-cli
+uvicorn
