@@ -31,6 +31,7 @@ You can star it first, I might take one month to optimize the algorithm.
 python3 -m venv myenv ## only init at first time.
 source myenv/bin/activate
 pip install --use-pep517 -r requirements.txt ## only install at first time.
+export SYMBOL="APPL"
 python index.py
 
 ## exist python env
@@ -39,7 +40,7 @@ deactivate
 
 ## Run it with Github-actions in schedule
 1. Fork the Repository
- 
+
 > First, fork this repository to your own GitHub account. This allows you to make changes and track your own version of the project.
 
 2. Get expected **Ticker Symbol**
@@ -63,7 +64,7 @@ To find your Chat ID:
 > Start a chat with your bot.
 > Send a message to the bot, then visit the following URL in your browser, replacing `YOUR_BOT_TOKEN` with your bot token:
 > Copy `https://api.telegram.org/bot{YOUR_BOT_TOKEN}/getUpdates`
-> 
+>
 > Look for the chat object in the JSON response to find your Chat ID.
 
 If you dont want to use telegram notification, its ok. Github actions will send you email if you dont set those variables.
