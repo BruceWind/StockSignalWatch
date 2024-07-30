@@ -5,8 +5,6 @@ StockSignalWatch is a Python-based tool for analyzing stock market data and gene
 
 In summary, it will tell you when to buy or sell.
 
-## 🚧 It is still developing
-You can star it first, I might take one month to optimize the algorithm.
 
 ## Features
 
