@@ -9,13 +9,13 @@ def send_telegram_notification(symbol, value):
     yahoo_fn_base_url = 'https://finance.yahoo.com/quote/'
     
     # Set the suggestion based on the value
-    if value > 3:
+    if value < -3:
         message = f"🟢Strong recommendation to buy \"{symbol}\"."
-    elif value > 1:
-        message = f"📈Recommendation to buy \"{symbol}\"."
-    elif value < -3:
-        message = f"🔴Strong recommendation to sell \"{symbol}\"."
     elif value < -1:
+        message = f"📈Recommendation to buy \"{symbol}\"."
+    elif value > 3:
+        message = f"🔴Strong recommendation to sell \"{symbol}\"."
+    elif value > 1:
         message = f"📉Recommendation to sell \"{symbol}\"."
     else:
         message = "No valid recommendation."
